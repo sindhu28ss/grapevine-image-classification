@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grapevine-classification-deployment
+spec:
+  replicas: 2  # Number of pods to run
+  selector:
+    matchLabels:
+      app: grapevine-classification
+  template:
+    metadata:
+      labels:
+        app: grapevine-classification
+    spec:
+      containers:
+      - name: grapevine-classification-container
+        image: sindhu0405/grapevine-classification  # Your Docker Hub image
+        ports:
+        - containerPort: 9696
+
+
